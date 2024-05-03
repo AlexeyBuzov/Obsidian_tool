@@ -55,8 +55,10 @@ func createDailyNote() (string, error) {
 
   monthPath := filepath.Join("/Users/jbane/" + PATH + DAILY_PATH + currentMonthPath)
   err := os.Mkdir(monthPath, os.ModePerm)
+  // TODO: Handle error when path already exist
   if err != nil {
-    return "", err
+    fmt.Println("Month path mkdir error:")
+    fmt.Println(err)
   }
 
   f, err := os.Create(os.ExpandEnv(monthPath + "/" + fileName))
